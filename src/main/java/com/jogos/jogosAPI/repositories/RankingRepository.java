@@ -18,6 +18,9 @@ public interface RankingRepository extends CrudRepository<Ranking, Long> {
     @Query("SELECT r.jogos.idJogo FROM Ranking r WHERE r.jogos.idJogo = :id")
     List<Long> findJogosIdsByJogoId(@Param("id") Long id);
 
+    @Query("SELECT r FROM Ranking r WHERE r.jogos.idJogo = :id ORDER BY r.pontuacao DESC")
+    List<Ranking> findRankingsByJogoPontuacao(@Param("id") Long id);
+
 
 
 }

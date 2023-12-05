@@ -36,14 +36,15 @@ public class RankingController {
     }
 
     @GetMapping(path = {"/ranking/jogo/{id}"})
-    public ResponseEntity<List<RankingOutPutJogos>> alljogoRanking(){
-        List<Ranking> rankingList = rankingService.findAllRanking();
+    public ResponseEntity<List<RankingOutPutJogos>> allJogoRanking(@PathVariable Long id) {
+        List<Ranking> rankingList = rankingService.findRankingsByJogoPontuacao(id);
         List<RankingOutPutJogos> rankingOutPutJogos = rankingList
                 .stream()
                 .map(RankingOutPutJogos::fromRanking)
                 .collect(Collectors.toList());
         return new ResponseEntity<>(rankingOutPutJogos, HttpStatus.OK);
     }
+
 
 
     @PostMapping(path = {"/rankings"})

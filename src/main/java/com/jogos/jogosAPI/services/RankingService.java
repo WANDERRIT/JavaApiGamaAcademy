@@ -47,4 +47,9 @@ public class RankingService {
         rankingRepository.findJogosIdsByJogoId(jogoId);
         return rankingList;
     }
+
+
+    public List<Ranking> findRankingsByJogoPontuacao(Long jogoId) {
+        return rankingRepository.findRankingsByJogoPontuacao(jogoId);
+    }
 }
